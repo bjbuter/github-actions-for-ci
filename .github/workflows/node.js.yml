@@ -24,6 +24,7 @@ jobs:
         path: public/
       
   test: 
+    needs: build 
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -35,7 +36,6 @@ jobs:
       with: 
         name: webpack artifacts
         path: public
-        needs: build 
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
